@@ -1,5 +1,5 @@
 package controller;
 
-class CustomerController {
+public class CustomerController {
 
 }
