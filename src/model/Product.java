@@ -10,7 +10,7 @@ private String barcode;
 private String location;
 private double price;
 
-public Product(int productId, String name, String desccription, String category, String model, String barcode, String location, double price) {
+public Product(int productId, String name, String desccription, String category, String model, String barcode, String location, double price, String description) {
 	this.productId = productId;
 	this.name = name;
 	this.description = description;
