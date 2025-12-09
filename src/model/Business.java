@@ -27,6 +27,11 @@ public class Business {
 		this.companyName = companyName;
 	}
 	
+	@Override
+	public String toString() {
+	    return companyName + " (CVR: " + cvrNumber + ")";
+	}
+
 	
 
 }

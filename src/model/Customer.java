@@ -23,12 +23,25 @@ public class Customer {
 		this.business = business;
 	}
 	
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public int getCustomerId() {
+	    return customerId;
 	}
 	
 	public boolean isBusinessCustomer() {
 	    return business != null;
 	}
+	
+	@Override
+	public String toString() {
+	    String businessInfo = (business != null) 
+	        ? ", Company: " + business.getCompanyName() + " (CVR: " + business.getCvrNumber() + ")" 
+	        : "";
+
+	    return "Customer{id=" + customerId +
+	           ", Name=" + person.getName() +
+	           businessInfo +
+	           "}";
+	}
+
 
 }
