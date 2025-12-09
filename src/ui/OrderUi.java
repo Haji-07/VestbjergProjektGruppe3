@@ -1,5 +1,5 @@
 package ui;
 
-public interface OrderUI {
+public interface OrderUi {
 
 }
