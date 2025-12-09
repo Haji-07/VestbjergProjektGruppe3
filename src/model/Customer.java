@@ -2,16 +2,17 @@ package model;
 
 public class Customer {
 
-	private int CustomerId;
+	private int customerId;
 	private Person person;
 	private Business business;
 	
-	public Person getPerson(){
-		return person;
+	public Customer(int customerId, Person person) {
+		this.customerId = customerId;
+		this.person = person;
 	}
 	
-	public void setPerson(Person person) {
-		this.person = person;
+	public Person getPerson(){
+		return person;
 	}
 	
 	public Business getBusiness() {
@@ -21,4 +22,13 @@ public class Customer {
 	public void setBusiness(Business business) {
 		this.business = business;
 	}
+	
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	
+	public boolean isBusinessCustomer() {
+	    return business != null;
+	}
+
 }
