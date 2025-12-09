@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import model.Product;
 
 public class ProductContainer {
-	private ArrayList<Product> product;
+	private ArrayList<Product> products;
 	private static ProductContainer instance;
 
 	private ProductContainer() {
-		product = new ArrayList<>();
+		products = new ArrayList<>();
 
 	}
 
@@ -19,7 +19,17 @@ public class ProductContainer {
 		return instance;
 	}
 
-	public ArrayList<Product> getProduct() {
-		return product;
+	public void addProduct(Product product) {
+		products.add(product);
+
+	}
+
+	public Product findProductByBarcade(String barcode) {
+		for (Product p : products) {
+			if (p.getBarcode().equals(barcode)) {
+				return p;
+			}
+		}
+		return null;
 	}
 }
