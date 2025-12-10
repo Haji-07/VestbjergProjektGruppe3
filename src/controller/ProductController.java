@@ -22,4 +22,7 @@ public class ProductController {
 	public ProductCopy findCopyById(int id) {
 		return ProductContainer.getInstance().findCopyById(id);
 	}
+	public Product findProductById(int id) {
+		return ProductContainer.getInstance().findProductByProductId(id);
+	}
 }

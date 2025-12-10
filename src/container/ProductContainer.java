@@ -32,6 +32,14 @@ public class ProductContainer {
 		}
 		return null;
 	}
+	public Product findProductByProductId(int productId)  {
+		for (Product p : products) {
+			if(p.getProductId() == productId) {
+				return p;
+			}
+		}
+		return null;
+	}
 	public void addProductCopy(int productId, int copyId, int quantity) {
 	Product foundProduct = null;
 		for (Product p : products) {
