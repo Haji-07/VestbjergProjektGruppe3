@@ -10,7 +10,7 @@ public class ProductController {
 
 	}
 
-	public void createProduct(int productId, String name, String description, String category, String model,
+	public void createProduct(String productId, String name, String description, String category, String model,
 			String barcode, String location, double price) {
 		Product newProduct = new Product(productId, name, description, category, model, barcode, location, price);
 		ProductContainer container = ProductContainer.getInstance();
@@ -18,10 +18,10 @@ public class ProductController {
 	}
 
 	public Product findProductByBarcode(String barcode) {
-		return ProductContainer.getInstance().findProductByBarcade(barcode);
+		return ProductContainer.getInstance().findProductByBarcode(barcode);
 	}
 
-	public void createProductCopy(int productId, int copyId, int quantity) {
+	public void createProductCopy(String productId, int copyId, int quantity) {
 		ProductContainer.getInstance().addProductCopy(productId, copyId, quantity);
 	}
 

@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Product {
-	private int productId;
+	private String productId;
 	private String name;
 	private String description;
 	private String category;
@@ -14,7 +14,7 @@ public class Product {
 	
 	private ArrayList<ProductCopy> copies;
 	
-	public Product(int productId, String name, String description, String category, String model, String barcode,
+	public Product(String productId, String name, String description, String category, String model, String barcode,
 			String location, double price) {
 		this.productId = productId;
 		this.name = name;
@@ -36,11 +36,11 @@ public class Product {
 		}
 		return null;
 	}
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 

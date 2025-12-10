@@ -6,6 +6,7 @@ import model.ProductCopy;
 
 public class ProductContainer {
 	private ArrayList<Product> products;
+	private ArrayList<ProductCopy> copies;
 	private static ProductContainer instance;
 
 	private ProductContainer() {
@@ -25,46 +26,44 @@ public class ProductContainer {
 
 	}
 
-	public Product findProductByBarcade(String barcode) {
-		for (Product p : products) {
-			if (p.getBarcode().equals(barcode)) {
-				return p;
-			}
+	public void addProductCopy(String productId, int copyId, int quantity) {
+		ProductCopy newCopy = new ProductCopy(copyId, quantity);
+		Product p = ProductContainer.getInstance().findProductByProductId(productId);
+		if (p != null) {
+			p.addProductCopy(newCopy);
 		}
-		return null;
+
 	}
 
-	public Product findProductByProductId(int productId) {
+	public Product findProductByBarcode(String barcode) {
+		Product res = null;
 		for (Product p : products) {
-			if (p.getProductId() == productId) {
-				return p;
+			if (p.getBarcode() == (barcode)) {
+				res = p;
 			}
+
 		}
-		return null;
+		return res;
 	}
 
-	public void addProductCopy(int productId, int copyId, int quantity) {
-		Product foundProduct = null;
+	public Product findProductByProductId(String productId) {
+		Product res = null;
 		for (Product p : products) {
 			if (p.getProductId() == productId) {
-				foundProduct = p;
-				break;
+				res = p;
 			}
-
 		}
-		if (foundProduct != null) {
-			ProductCopy copy = new ProductCopy(copyId, quantity);
-			foundProduct.addProductCopy(copy);
-		}
+		return res;
 	}
 
 	public ProductCopy findCopyById(int copyId) {
-		for (Product p : products) {
-			ProductCopy copy = p.findCopy(copyId);
-			if (copy != null) {
-				return copy;
-			}
-		}
-		return null;
+	    ProductCopy res = null;
+	    for (ProductCopy pc : copies) {
+	        if (pc.getCopyId() == copyId) {
+	            res = pc;
+	        }
+	    }
+	    return res;
 	}
+
 }
