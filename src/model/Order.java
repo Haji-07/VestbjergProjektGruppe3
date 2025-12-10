@@ -4,12 +4,16 @@ import java.util.ArrayList;
 
 public class Order {
 
-	private int orderId;
 	private ArrayList<OrderLine> orderLines;
 	private Customer customer;
+	private OrderStatus status;
+
 
 	public Order() {
 		this.orderLines = new ArrayList<>();
+		this.customer = customer;
+		this.status = OrderStatus.ACTIVE;
+
 	}
 
 	public void addOrderLine(Product product, int quantity) {
@@ -29,11 +33,29 @@ public class Order {
 		return total;
 	}
 
-	public int getOrderId() {
-		return orderId;
+	public ArrayList<OrderLine> getOrderLines() {
+		return orderLines;
 	}
 
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
+	public void setOrderLines(ArrayList<OrderLine> orderLines) {
+		this.orderLines = orderLines;
 	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+	
+	
 }

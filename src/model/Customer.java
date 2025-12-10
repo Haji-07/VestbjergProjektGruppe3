@@ -5,43 +5,29 @@ public class Customer {
 	private int customerId;
 	private Person person;
 	private Business business;
-	
+
 	public Customer(int customerId, Person person) {
 		this.customerId = customerId;
 		this.person = person;
 	}
-	
-	public Person getPerson(){
+
+	public Person getPerson() {
 		return person;
 	}
-	
+
 	public Business getBusiness() {
 		return business;
 	}
-	
+
 	public void setBusiness(Business business) {
 		this.business = business;
 	}
-	
+
 	public int getCustomerId() {
-	    return customerId;
+		return customerId;
 	}
-	
+
 	public boolean isBusinessCustomer() {
-	    return business != null;
+		return business != null;
 	}
-	
-	@Override
-	public String toString() {
-	    String businessInfo = (business != null) 
-	        ? ", Company: " + business.getCompanyName() + " (CVR: " + business.getCvrNumber() + ")" 
-	        : "";
-
-	    return "Customer{id=" + customerId +
-	           ", Name=" + person.getName() +
-	           businessInfo +
-	           "}";
-	}
-
-
 }

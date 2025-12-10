@@ -1,7 +1,6 @@
 package container;
 
 import java.util.ArrayList;
-
 import model.Order;
 
 public class OrderContainer {
@@ -24,15 +23,4 @@ public class OrderContainer {
 	public void addOrder(Order o) {
 		orders.add(o);
 	}
-
-	public Order findOrderById(int id) {
-		Order res = null;
-		for (Order o : orders) {
-			if (o.getOrderId() == id) {
-				res = o;
-			}
-		}
-		return res;
-	}
-
 }

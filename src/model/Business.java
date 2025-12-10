@@ -1,10 +1,10 @@
 package model;
 
 public class Business {
-	
+
 	private String cvrNumber;
 	private String companyName;
-	
+
 	public Business(String cvrNumber, String companyName) {
 		super();
 		this.cvrNumber = cvrNumber;
@@ -26,12 +26,10 @@ public class Business {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	
+
 	@Override
 	public String toString() {
-	    return companyName + " (CVR: " + cvrNumber + ")";
+		return companyName + " (CVR: " + cvrNumber + ")";
 	}
-
-	
 
 }
