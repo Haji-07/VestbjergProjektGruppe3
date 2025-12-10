@@ -1,6 +1,7 @@
 package controller;
 import model.Product;
 import container.ProductContainer;
+import model.ProductCopy;
 
 public class ProductController {
 
@@ -14,5 +15,11 @@ public class ProductController {
 	}
 	public Product findProductByBarcode(String barcode) {
 		return ProductContainer.getInstance().findProductByBarcade(barcode);
+	}
+	public void createProductCopy(int productId, int copyId, int quantity) {
+		ProductContainer.getInstance() .addProductCopy(productId, copyId, quantity);
+	}
+	public ProductCopy findCopyById(int id) {
+		return ProductContainer.getInstance().findCopyById(id);
 	}
 }
