@@ -32,4 +32,8 @@ public class ProductController {
 	public ProductCopy findCopyById(int id) {
 		return ProductContainer.getInstance().findCopyById(id);
 	}
+	public void addProduct(Product p) {
+	    ProductContainer.getInstance().addProduct(p);
+	}
+
 }

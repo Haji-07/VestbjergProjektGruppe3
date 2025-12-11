@@ -48,4 +48,9 @@ public class CustomerController {
 	public Customer findCustomerById(int customerId) {
 		return customerContainer.findCustomerById(customerId);
 	}
+	
+	public void addCustomer(Customer customer) {
+	    CustomerContainer.getInstance().addCustomer(customer);
+	}
+
 }

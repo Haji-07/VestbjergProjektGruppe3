@@ -79,5 +79,8 @@ public class ProductContainer {
 		}
 		return null;
 	}
+	public void addProduct(Product p) {
+	    products.add(p);
+	}
 
 }
