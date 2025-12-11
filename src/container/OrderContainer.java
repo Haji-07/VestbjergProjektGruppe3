@@ -12,7 +12,6 @@ public class OrderContainer {
 		orders = new ArrayList<>();
 	}
 
-	// Sikrer at der kun findes én instans af OrderContainer i systemet (Singleton)
 	public static OrderContainer getInstance() {
 		if (instance == null) {
 			instance = new OrderContainer();
