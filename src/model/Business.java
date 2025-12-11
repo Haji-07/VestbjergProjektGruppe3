@@ -26,10 +26,4 @@ public class Business {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-
-	@Override
-	public String toString() {
-		return companyName + " (CVR: " + cvrNumber + ")";
-	}
-
 }
