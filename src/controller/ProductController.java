@@ -20,6 +20,9 @@ public class ProductController {
 	public Product findProductByBarcode(String barcode) {
 		return ProductContainer.getInstance().findProductByBarcode(barcode);
 	}
+	public Product findProductByProductId(String productId) {
+		return ProductContainer.getInstance().findProductByBarcode(productId);
+	}
 	
 	public Product findProductDetails(String productId, String name) {
 		return ProductContainer.getInstance().findProductDetails(productId, name);

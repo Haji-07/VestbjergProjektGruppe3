@@ -5,11 +5,11 @@ import model.Product;
 
 import java.util.Scanner;
 
-public class WareHouseUI {
+public class WarehouseUi {
 	private ProductController productCtrl;
 	private Scanner scanner;
 
-	public WareHouseUI() {
+	public WarehouseUi() {
 		this.productCtrl = new ProductController();
 		this.scanner = new Scanner(System.in);
 
@@ -46,9 +46,14 @@ public class WareHouseUI {
 
 	public void findProductDetails() {
 		System.out.println("Enter Product Barcode/ID");
-		String productId = scanner.nextLine();
-		String name = scanner.nextLine();
-		Product foundProduct = productCtrl.findProductDetails(productId, name);
+		String barcode = scanner.nextLine();
+		Product foundProduct = productCtrl.findProductByBarcode(barcode);
+		if(foundProduct == null) {
+			System.out.println("No product found with that Barcode");
+			System.out.println("Enter Product ID to search instead");
+			String productId = scanner.nextLine();
+			foundProduct = productCtrl.findProductByProductId(productId);
+		}
 		showProductDetails(foundProduct);
 	}
 	public void showProductDetails(Product product) {
@@ -61,4 +66,5 @@ public class WareHouseUI {
 	public void exitWarehouse() {
 		System.out.println("Closing Warehouse Status");
 	}
+
 }
