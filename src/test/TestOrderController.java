@@ -3,12 +3,9 @@ package test;
 import controller.CustomerController;
 import controller.OrderController;
 import controller.ProductController;
-import model.Order;
 import model.Person;
 import model.Product;
 import model.Customer;
-import container.OrderContainer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

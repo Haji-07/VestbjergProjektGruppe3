@@ -11,7 +11,7 @@ public class Order {
 
 	public Order() {
 		this.orderLines = new ArrayList<>();
-		this.customer = customer;
+		this.customer = null;
 		this.status = OrderStatus.ACTIVE;
 
 	}
@@ -26,9 +26,9 @@ public class Order {
 	}
 
 	public double calculateTotal() {
-		double total = 0;
+		double total = 0.0;
 		for (OrderLine line : orderLines) {
-			total += line.calculateTotal();
+			total += line.getProduct().getPrice() * line.getQuantity();
 		}
 		return total;
 	}

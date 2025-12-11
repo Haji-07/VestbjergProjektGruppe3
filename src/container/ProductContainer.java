@@ -38,7 +38,7 @@ public class ProductContainer {
 	public Product findProductByBarcode(String barcode) {
 		Product res = null;
 		for (Product p : products) {
-			if (p.getBarcode() == (barcode)) {
+			if (p.getBarcode() != null && p.getBarcode().equals(barcode)) {
 				res = p;
 			}
 
@@ -49,7 +49,7 @@ public class ProductContainer {
 	public Product findProductByProductId(String productId) {
 		Product res = null;
 		for (Product p : products) {
-			if (p.getProductId() == productId) {
+			if (p.getProductId() != null && p.getProductId().equals(productId)) {
 				res = p;
 			}
 		}
@@ -70,14 +70,14 @@ public class ProductContainer {
 		Product res = null;
 		for (Product p : products) {
 			if (productId != null && !productId.isEmpty() && p.getProductId().equals(productId)) {
-				return p;
+				res = p;
 			}
 			if (name != null && !name.isEmpty() && p.getName().equals(name)) {
-				return p;
+				res = p;
 			}
 
 		}
-		return null;
+		return res;
 	}
 
 }
