@@ -21,6 +21,7 @@ public class CustomerController {
 
 	public Customer createPrivateCustomer(String name, String address, String postalCode, String phoneNumber,
 			String email) {
+		
 		int id = generateCustomerId();
 		Person person = new Person(name, address, postalCode, phoneNumber, email);
 		Customer customer = new Customer(id, person);
@@ -48,9 +49,9 @@ public class CustomerController {
 	public Customer findCustomerById(int customerId) {
 		return customerContainer.findCustomerById(customerId);
 	}
-	
+
 	public void addCustomer(Customer customer) {
-	    CustomerContainer.getInstance().addCustomer(customer);
+		CustomerContainer.getInstance().addCustomer(customer);
 	}
 
 }

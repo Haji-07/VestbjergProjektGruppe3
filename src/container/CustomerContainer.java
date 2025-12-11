@@ -25,11 +25,12 @@ public class CustomerContainer {
 	}
 
 	public Customer findCustomerById(int customerId) {
+		Customer res = null;
 		for (Customer c : customers) {
 			if (c.getCustomerId() == customerId) {
-				return c;
+				res = c;
 			}
 		}
-		return null;
+		return res;
 	}
 }

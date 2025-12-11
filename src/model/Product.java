@@ -29,12 +29,13 @@ public class Product {
 	}
 
 	public ProductCopy findCopy(int copyId) {
+		ProductCopy res = null;
 		for (ProductCopy copy : copies) {
 			if (copy.getCopyId() == copyId) {
-				return copy;
+				res = copy;
 			}
 		}
-		return null;
+		return res;
 	}
 	public String getProductId() {
 		return productId;

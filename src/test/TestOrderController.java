@@ -28,7 +28,7 @@ public class TestOrderController {
 
 		new ProductController().addProduct(p);
 
-		oc.addProductToOrder("123", 2);
+		oc.addProductToOrder("BAR123", 2);
 		assertEquals(100.0, oc.calculateOrderTotal());
 	}
 

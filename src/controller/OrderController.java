@@ -37,10 +37,11 @@ public class OrderController {
 	}
 
 	public double calculateOrderTotal() {
+		double total = 0.0;
 		if (o != null) {
-			return o.calculateTotal();
+			total = o.calculateTotal();
 		}
-		return 0.0;
+		return total;
 	}
 
 	public void saveOrder() {
