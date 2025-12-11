@@ -65,5 +65,22 @@ public class ProductContainer {
 	    }
 	    return res;
 	}
+	
+	public Product findProductDetails(String name, String productId) {
+		Product res = null;
+		for(Product p : products) {
+			if (productId != null && !productId.isEmpty() && p.getProductId().equals(productId)) {
+				return p;
+			}
+			if(name != null && !name.isEmpty() && p.getName().equals(name)) {
+				return p;
+			}
+			
+		}
+		return null;
+	}
+	public void addProduct(Product p) {
+	    products.add(p);
+	}
 
 }
