@@ -24,7 +24,7 @@ public class TestOrderController {
 		OrderController oc = new OrderController();
 		oc.createOrder();
 
-		Product p = new Product("123", "Hammer", "En tung hammer", "Værktøj", "ModelX", "BAR123", "Reol A1", 50.0);
+		Product p = new Product("123", "Hammer", "En tung hammer", "Værktøj", "ModelX", "BAR123", "Reol A1", 50.0, 200);
 
 		new ProductController().addProduct(p);
 

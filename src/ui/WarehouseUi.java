@@ -48,7 +48,7 @@ public class WarehouseUi {
 		System.out.println("Enter Product Barcode/ID");
 		String barcode = scanner.nextLine();
 		Product foundProduct = productCtrl.findProductByBarcode(barcode);
-		if(foundProduct == null) {
+		if (foundProduct == null) {
 			System.out.println("No product found with that Barcode");
 			System.out.println("Enter Product ID to search instead");
 			String productId = scanner.nextLine();
@@ -56,13 +56,23 @@ public class WarehouseUi {
 		}
 		showProductDetails(foundProduct);
 	}
+
 	public void showProductDetails(Product product) {
 		if (product != null) {
-			System.out.println("Showing product details for " + product.getName());
-		}else {
+			System.out.println("--- Product Details ---");
+			System.out.println("Name:        " + product.getName());
+			System.out.println("Description: " + product.getDescription());
+			System.out.println("Category:    " + product.getCategory());
+			System.out.println("Model:       " + product.getModel());
+			System.out.println("Barcode:     " + product.getBarcode());
+			System.out.println("Location:    " + product.getLocation());
+			System.out.println("Price:       " + product.getPrice());
+			System.out.println("Quantity:    " + product.getQuantity());
+		} else {
 			System.out.println("Product couldn't be found");
 		}
 	}
+
 	public void exitWarehouse() {
 		System.out.println("Closing Warehouse Status");
 	}

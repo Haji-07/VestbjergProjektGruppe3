@@ -11,11 +11,12 @@ public class Product {
 	private String barcode;
 	private String location;
 	private double price;
-	
+	private int quantity;
+
 	private ArrayList<ProductCopy> copies;
-	
+
 	public Product(String productId, String name, String description, String category, String model, String barcode,
-			String location, double price) {
+			String location, double price, int quantity) {
 		this.productId = productId;
 		this.name = name;
 		this.description = description;
@@ -24,8 +25,9 @@ public class Product {
 		this.barcode = barcode;
 		this.location = location;
 		this.price = price;
+		this.quantity = quantity; 
 		this.copies = new ArrayList<>();
-		
+
 	}
 
 	public ProductCopy findCopy(int copyId) {
@@ -37,6 +39,7 @@ public class Product {
 		}
 		return res;
 	}
+
 	public String getProductId() {
 		return productId;
 	}
@@ -100,8 +103,16 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 	public void addProductCopy(ProductCopy copy) {
 		copies.add(copy);
-		
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }
