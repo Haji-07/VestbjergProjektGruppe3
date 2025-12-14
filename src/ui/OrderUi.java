@@ -1,6 +1,13 @@
 package ui;
 
 import controller.OrderController;
+import model.Order;
+import model.OrderLine;
+import model.Product;
+import model.Discount;
+import model.DiscountType;
+
+
 import java.util.Scanner;
 
 public class OrderUi {
@@ -22,8 +29,9 @@ public class OrderUi {
 			System.out.println("\nSelect an option:");
 			System.out.println("1. Add Customer");
 			System.out.println("2. Add Product");
-			System.out.println("3. Show Total");
-			System.out.println("4. Finish Order");
+			System.out.println("3. Add Discount");
+			System.out.println("4. Show Total");
+			System.out.println("5. Finish Order");
 			System.out.print("Enter choice: ");
 
 			int choice = scanner.nextInt();
@@ -39,20 +47,25 @@ public class OrderUi {
 				break;
 
 			case 3:
-				showOrderTotal();
+				addDiscountMenu();
 				break;
 
 			case 4:
+				showOrderTotal();
+				break;
+
+			case 5:
 				finishOrderMenu();
-				return;
-				
+				running = false;
+				break;
+
 			default:
 				System.out.println("Invalid option, try again.");
 			}
 		}
 	}
 
-	public void createOrder() {
+	private void createOrder() {
 		System.out.println("Initializing new order...");
 		orderCtrl.createOrder();
 	}
@@ -66,12 +79,7 @@ public class OrderUi {
 		System.out.println("Customer added.");
 	}
 
-	public void showOrderTotal() {
-		double total = orderCtrl.calculateOrderTotal();
-		System.out.println("Total Price: kr" + total);
-	}
-
-	public void addProductToOrder() {
+	private void addProductToOrder() {
 		System.out.print("Enter Product Barcode: ");
 		String barcode = scanner.nextLine();
 
@@ -83,14 +91,57 @@ public class OrderUi {
 		System.out.println("Product added to order.");
 	}
 
-	public void finishOrderMenu() {
-		System.out.println("Finalizing order...");
-		orderCtrl.finishOrder();
-		System.out.println("Order completed and saved.");
+	private void addDiscountMenu() {
+		System.out.println("\nSelect discount:");
+		System.out.println("1. Craftsman discount");
+		System.out.println("2. Quantity discount");
+		System.out.println("3. Pickup discount");
+		System.out.print("Choice: ");
+
+		int choice = scanner.nextInt();
+		scanner.nextLine();
+
+		switch (choice) {
+		case 1:
+			orderCtrl.addCraftsmanDiscount();
+			System.out.println("Craftsman discount added.");
+			break;
+
+		case 2:
+			System.out.print("Enter total quantity: ");
+			int qty = scanner.nextInt();
+			scanner.nextLine();
+			orderCtrl.addQuantityDiscount(qty);
+			System.out.println("Quantity discount added if applicable.");
+			break;
+
+		case 3:
+			orderCtrl.addPickupDiscount();
+			System.out.println("Pickup discount added.");
+			break;
+
+		default:
+			System.out.println("Invalid discount option.");
+		}
 	}
 
-	public static void main(String[] args) {
-		OrderUi ui = new OrderUi();
-		ui.openOrderMenu();
+	public void showOrderTotal() {
+		double total = orderCtrl.calculateOrderTotal();
+		System.out.println("Total Price: kr" + total);
+	}
+
+	public void finishOrderMenu() {
+		System.out.println("Finalizing order...");
+        orderCtrl.finishOrder();
+        System.out.println("Order completed and saved.");
+
+	    for (OrderLine line : current.getOrderLines()) {
+	        Product product = line.getProduct();
+	        int newQty = product.getQuantity() - line.getQuantity();
+	        if (newQty < 0) {
+	            newQty = 0;
+	        }
+	        product.setQuantity(newQty);
+	    }
 	}
 }

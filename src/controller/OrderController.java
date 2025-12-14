@@ -1,6 +1,8 @@
 package controller;
 
 import container.OrderContainer;
+import model.Discount;
+import model.DiscountType;
 import model.Order;
 import model.Product;
 import model.Customer;
@@ -36,6 +38,24 @@ public class OrderController {
 		}
 	}
 
+	public void addCraftsmanDiscount() {
+		if (o != null) {
+			o.addDiscount(new Discount(DiscountType.CRAFTSMAN, 10));
+		}
+	}
+
+	public void addPickupDiscount() {
+		if (o != null) {
+			o.addDiscount(new Discount(DiscountType.PICKUP, 5));
+		}
+	}
+
+	public void addQuantityDiscount(int totalQuantity) {
+		if (o != null && totalQuantity >= 10) {
+			o.addDiscount(new Discount(DiscountType.QUANTITY, 5));
+		}
+	}
+
 	public double calculateOrderTotal() {
 		double total = 0.0;
 		if (o != null) {
@@ -53,4 +73,9 @@ public class OrderController {
 	public void finishOrder() {
 		saveOrder();
 	}
+	
+	public Order getCurrentOrder() {
+		return o;
+	}
+
 }
