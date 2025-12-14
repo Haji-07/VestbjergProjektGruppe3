@@ -31,23 +31,27 @@ public class Order {
 	public void addDiscount(Discount discount) {
 		discounts.add(discount);
 	}
-	private double getTotalDiscountPercentage() {
-		double total = 0.0;
-		for (Discount d : discounts) {
-			total += d.getPercentage();
-		}
-		if (total > MAX_DISCOUNT) {
-			total = MAX_DISCOUNT;
-		}
-		return total;
-	}
+
 	public double calculateTotal() {
-		double total = 0.0;
-		for (OrderLine line : orderLines) {
-			total += line.getProduct().getPrice() * line.getQuantity();
-		}
-		return total;
+	    double total = 0.0;
+	    for (OrderLine line : orderLines) {
+	        total += line.getProduct().getPrice() * line.getQuantity();
+	    }
+
+	    // calculate total discount percentage
+	    double discountPercentage = 0.0;
+	    for (Discount d : discounts) {
+	        discountPercentage += d.getPercentage();
+	    }
+	    // cap max discount at 20%
+	    if (discountPercentage > MAX_DISCOUNT) {
+	        discountPercentage = MAX_DISCOUNT;
+	    }
+
+	    // apply discount
+	    return total * (1 - discountPercentage / 100);
 	}
+
 
 	public ArrayList<OrderLine> getOrderLines() {
 		return orderLines;

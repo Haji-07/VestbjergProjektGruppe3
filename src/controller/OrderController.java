@@ -70,7 +70,8 @@ public class OrderController {
 		}
 	}
 
-	public void finishOrder() {
+	public Order finishOrder() {
 		saveOrder();
+		return o;
 	}
 }
