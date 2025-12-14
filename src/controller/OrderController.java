@@ -73,9 +73,4 @@ public class OrderController {
 	public void finishOrder() {
 		saveOrder();
 	}
-	
-	public Order getCurrentOrder() {
-		return o;
-	}
-
 }

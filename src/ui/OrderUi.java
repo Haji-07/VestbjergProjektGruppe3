@@ -7,7 +7,6 @@ import model.Product;
 import model.Discount;
 import model.DiscountType;
 
-
 import java.util.Scanner;
 
 public class OrderUi {
@@ -132,16 +131,7 @@ public class OrderUi {
 
 	public void finishOrderMenu() {
 		System.out.println("Finalizing order...");
-        orderCtrl.finishOrder();
-        System.out.println("Order completed and saved.");
-
-	    for (OrderLine line : current.getOrderLines()) {
-	        Product product = line.getProduct();
-	        int newQty = product.getQuantity() - line.getQuantity();
-	        if (newQty < 0) {
-	            newQty = 0;
-	        }
-	        product.setQuantity(newQty);
-	    }
+		orderCtrl.finishOrder();
+		System.out.println("Order completed and saved.");
 	}
 }
