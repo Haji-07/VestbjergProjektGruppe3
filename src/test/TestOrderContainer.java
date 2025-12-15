@@ -4,23 +4,21 @@ import container.OrderContainer;
 import model.Order;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
-public class TestOrderContainer{
-	
-	@Test
-	 void testSingletonInstance() {
-	        OrderContainer oc1 = OrderContainer.getInstance();
-	        OrderContainer oc2 = OrderContainer.getInstance();
+class TestOrderContainer {
 
-	        assertSame(oc1, oc2);
-	    }
-	
-	@Test
-    void testAddOrder() {
-        OrderContainer oc = OrderContainer.getInstance();
-        Order o = new Order();
+    @Test
+    void TestSingletonInstance() {
+        assertSame(
+            OrderContainer.getInstance(),
+            OrderContainer.getInstance()
+        );
+    }
 
-        assertDoesNotThrow(() -> oc.addOrder(o));
+    @Test
+    void TestAddOrder() {
+        OrderContainer.getInstance().addOrder(new Order());
     }
 }
+
