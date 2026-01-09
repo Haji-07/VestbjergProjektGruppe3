@@ -12,6 +12,7 @@ public class Gui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -47,9 +48,9 @@ public class Gui extends JFrame {
 	        panel.add(panel_1, gbc_panel_1);
 	        GridBagLayout gbl_panel_1 = new GridBagLayout();
 	        gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	        gbl_panel_1.rowHeights = new int[]{0, 0, 0};
-	        gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-	        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+	        gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+	        gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+	        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 	        panel_1.setLayout(gbl_panel_1);
 	        
 	        JLabel lblNewLabel = new JLabel("New label");
@@ -70,10 +71,35 @@ public class Gui extends JFrame {
 	        JLabel lblNewLabel_1 = new JLabel("New label");
 	        GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 	        gbc_lblNewLabel_1.gridwidth = 9;
-	        gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
+	        gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 	        gbc_lblNewLabel_1.gridx = 0;
 	        gbc_lblNewLabel_1.gridy = 1;
 	        panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
+	        
+	        JLabel lblNewLabel_2 = new JLabel("New label");
+	        GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+	        gbc_lblNewLabel_2.gridwidth = 9;
+	        gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+	        gbc_lblNewLabel_2.gridx = 0;
+	        gbc_lblNewLabel_2.gridy = 2;
+	        panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
+	        
+	        JButton btnNewButton_1 = new JButton("New button");
+	        GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+	        gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
+	        gbc_btnNewButton_1.gridx = 11;
+	        gbc_btnNewButton_1.gridy = 2;
+	        panel_1.add(btnNewButton_1, gbc_btnNewButton_1);
+	        
+	        table = new JTable();
+	        GridBagConstraints gbc_table = new GridBagConstraints();
+	        gbc_table.gridheight = 4;
+	        gbc_table.gridwidth = 13;
+	        gbc_table.insets = new Insets(0, 0, 5, 5);
+	        gbc_table.fill = GridBagConstraints.BOTH;
+	        gbc_table.gridx = 0;
+	        gbc_table.gridy = 3;
+	        panel_1.add(table, gbc_table);
 
 	}
 
