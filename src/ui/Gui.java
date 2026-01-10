@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
+import java.awt.GridBagLayout;
 
 public class Gui extends JFrame {
 
@@ -36,6 +39,12 @@ public class Gui extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{0};
+		gbl_contentPane.rowHeights = new int[]{0};
+		gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
 
 	}
 
