@@ -7,6 +7,9 @@ import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
+import java.awt.GridBagLayout;
 
 public class Gui extends JFrame {
 
@@ -30,6 +33,7 @@ public class Gui extends JFrame {
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setBounds(100, 100, 450, 300);
 
+<<<<<<< HEAD
 	        contentPane = new JPanel(new BorderLayout());
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        setContentPane(contentPane);
@@ -100,6 +104,23 @@ public class Gui extends JFrame {
 	        gbc_table.gridx = 0;
 	        gbc_table.gridy = 3;
 	        panel_1.add(table, gbc_table);
+=======
+	/**
+	 * Create the frame.
+	 */
+	public Gui() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{0};
+		gbl_contentPane.rowHeights = new int[]{0};
+		gbl_contentPane.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
+>>>>>>> fc02d0aa85506fb6cf8f9b9b5cfe9f677c45307c
 
 	}
 
