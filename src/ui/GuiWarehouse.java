@@ -18,7 +18,7 @@ public class GuiWarehouse extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Gui frame = new Gui();
+					GuiWarehouse frame = new GuiWarehouse ();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,6 @@ public class GuiWarehouse extends JFrame {
 		setTitle("Warehouse Search");
 		setBounds(100, 100, 500, 450);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 
 		contentPanel = new JPanel();
@@ -54,7 +53,6 @@ public class GuiWarehouse extends JFrame {
 	private void createCenter() {
 		JPanel panel = new JPanel(new BorderLayout(5, 5));
 		contentPanel.add(panel, BorderLayout.CENTER);
-
 		JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
 		JLabel lblBarcode = new JLabel("Barcode");
