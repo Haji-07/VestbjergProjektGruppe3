@@ -117,7 +117,7 @@ public class Gui extends JFrame {
 	        TopPanel.add(textField_Barcode, gbc_textField_Barcode);
 	        textField_Barcode.setColumns(10);
 	        
-	        JButton btnAddItem = new JButton("ADD Item");
+	        JButton btnAddItem = new JButton("Add Item");
 	        GridBagConstraints gbc_btnAddItem = new GridBagConstraints();
 	        gbc_btnAddItem.insets = new Insets(0, 0, 0, 5);
 	        gbc_btnAddItem.anchor = GridBagConstraints.NORTHWEST;

@@ -92,13 +92,12 @@ public class GuiWarehouse extends JFrame {
 	private void searchClicked() {
 		String barcode = txtBarcode.getText();
 		Product p = controller.findProductByBarcode(barcode);
+		String res = "Product not found with barcode: " + barcode;
 
-		if (p == null) {
-			txtResult.setText("Product not found with barcode: " + barcode);
-			return;
-		}
+		if (p != null)
+		    res = formatProduct(p);
 
-		txtResult.setText(formatProduct(p));
+		txtResult.setText(res);
 	}
 
 	private String formatProduct(Product p) {
