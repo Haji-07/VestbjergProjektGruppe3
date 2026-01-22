@@ -7,17 +7,25 @@ import controller.ProductController;
 import model.Product;
 
 public class GuiWarehouse extends JFrame {
-
 	private static final long serialVersionUID = 1L;
-
 	private JPanel contentPanel;
-
 	private JTextField txtBarcode;
 	private JTextArea txtResult;
-
 	private JButton searchButton;
-
 	private ProductController controller;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Gui frame = new Gui();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	public GuiWarehouse() {
 		this.controller = new ProductController();
@@ -100,11 +108,5 @@ public class GuiWarehouse extends JFrame {
 				+ p.getCategory() + "\n" + "Model:       " + p.getModel() + "\n" + "Barcode:     " + p.getBarcode()
 				+ "\n" + "Location:    " + p.getLocation() + "\n" + "Price:       " + p.getPrice() + "\n"
 				+ "Quantity:    " + p.getQuantity();
-	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
-			new GuiWarehouse().setVisible(true);
-		});
 	}
 }

@@ -1,17 +1,16 @@
 package ui;
 
 import java.awt.EventQueue;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import controller.OrderController;
 
 public class Gui extends JFrame {
 
@@ -136,7 +135,7 @@ public class Gui extends JFrame {
 	        JPanel BottomPanel = new JPanel();
 	        BottomPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 	        contentPane.add(BottomPanel, BorderLayout.SOUTH);
-	        BottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+	        BottomPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 	        
 	        JButton btnSaveOrder = new JButton("Save Order");
 	        btnSaveOrder.addActionListener(new ActionListener() {
@@ -156,7 +155,6 @@ public class Gui extends JFrame {
 	        textField_Total.setColumns(10);
 	        
 	        JButton btnExit = new JButton("Exit");
-	        btnExit.setHorizontalAlignment(SwingConstants.RIGHT);
 	        BottomPanel.add(btnExit);
 
 }
