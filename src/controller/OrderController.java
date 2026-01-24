@@ -53,4 +53,13 @@ public class OrderController {
         saveOrder();
         return o;
     }
+    
+    public Order getOrder() {
+        return o;
+    }
+
+    public boolean hasActiveOrder() {
+        return o != null;
+    }
+
 }

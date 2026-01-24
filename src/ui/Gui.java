@@ -11,6 +11,8 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import controller.OrderController;
+import javax.swing.table.DefaultTableModel;
+
 
 public class Gui extends JFrame {
 
@@ -21,6 +23,9 @@ public class Gui extends JFrame {
 	private JTextField textField_Quantity;
 	private JTable table;
 	private JTextField textField_Total;
+	private DefaultTableModel tableModel;
+
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -128,9 +133,19 @@ public class Gui extends JFrame {
 	        JScrollPane scrollPane = new JScrollPane();
 	        contentPane.add(scrollPane, BorderLayout.CENTER);
 	        
-	        table = new JTable();
-	        table.setFillsViewportHeight(true);
-	        scrollPane.setViewportView(table);
+	        tableModel = new DefaultTableModel(
+	        	    new Object[]{"Barcode", "Name", "Quantity", "Unit price", "Line total"}, 0
+	        	) {
+	        	    @Override
+	        	    public boolean isCellEditable(int row, int column) {
+	        	        return false;
+	        	    }
+	        	};
+
+	        	table = new JTable(tableModel);
+	        	table.setFillsViewportHeight(true);
+	        	scrollPane.setViewportView(table);
+
 	        
 	        JPanel BottomPanel = new JPanel();
 	        BottomPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
