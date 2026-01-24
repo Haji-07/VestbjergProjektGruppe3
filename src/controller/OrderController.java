@@ -62,4 +62,15 @@ public class OrderController {
         return o != null;
     }
 
+    public void createAndAddWalkInCustomerToOrder() {
+        if (o == null) {
+            createOrder();
+        }
+
+        Customer c = customerController.createWalkInCustomer(); 
+        if (c != null) {
+            o.addCustomer(c);
+        }
+    }
+
 }

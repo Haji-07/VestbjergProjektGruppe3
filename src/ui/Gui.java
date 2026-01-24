@@ -3,8 +3,6 @@ package ui;
 import java.awt.EventQueue;
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
@@ -90,6 +88,20 @@ public class Gui extends JFrame {
 	        gbc_btnCustomerId.gridx = 7;
 	        gbc_btnCustomerId.gridy = 0;
 	        TopPanel.add(btnCustomerId, gbc_btnCustomerId);
+	        
+	        btnCustomerId.addActionListener(new ActionListener() {
+	        	@Override
+	        	public void actionPerformed(ActionEvent e) {
+	        		orderController.createAndAddWalkInCustomerToOrder();
+	        		
+	        		JOptionPane.showMessageDialog(
+	        				Gui.this,
+	        				"Customer oprettet og tilføjet til ordren."
+	        				);
+	        		textField_CustomerId.setEditable(false);
+	        		btnCustomerId.setEnabled(false);
+	        	}
+	        });
 	        
 	        JLabel lblBarcode = new JLabel("Product Barcode ");
 	        GridBagConstraints gbc_lblBarcode = new GridBagConstraints();
@@ -200,7 +212,21 @@ public class Gui extends JFrame {
 	        
 	        JButton btnSaveOrder = new JButton("Save Order");
 	        btnSaveOrder.addActionListener(new ActionListener() {
+	        	@Override
 	        	public void actionPerformed(ActionEvent e) {
+	        		
+	        		orderController.saveOrder();
+	        		
+	        		JOptionPane.showMessageDialog(Gui.this, "Order Saved.");
+	        		
+	        		orderController.createOrder();
+	        		
+	        		tableModel.setRowCount(0);
+	        		textField_Total.setText("");
+	        		
+	        		textField_CustomerId.setEditable(true);
+	        		btnCustomerId.setEnabled(true);
+	        		textField_CustomerId.setText("");
 	        	}
 	        });
 	        btnSaveOrder.setHorizontalAlignment(SwingConstants.LEFT);
@@ -217,6 +243,12 @@ public class Gui extends JFrame {
 	        
 	        JButton btnExit = new JButton("Exit");
 	        BottomPanel.add(btnExit);
+	        btnExit.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                dispose(); 
+	            }
+	        });
 }
 	 private void refreshTableAndTotal() {
 		 tableModel.setRowCount(0);
