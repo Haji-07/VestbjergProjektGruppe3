@@ -24,6 +24,8 @@ public class Gui extends JFrame {
 	private JTable table;
 	private JTextField textField_Total;
 	private DefaultTableModel tableModel;
+	private OrderController orderController;
+
 
 	
 	
@@ -47,6 +49,11 @@ public class Gui extends JFrame {
 	        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        setContentPane(contentPane);
 	        contentPane.setLayout(new BorderLayout(0, 0));
+	        
+	        orderController = new OrderController();
+	        orderController.createOrder();
+	        System.out.println("Order created? " + (orderController.getOrder() != null));
+
 	        
 	        JPanel TopPanel = new JPanel();
 	        contentPane.add(TopPanel, BorderLayout.NORTH);
@@ -130,6 +137,45 @@ public class Gui extends JFrame {
 	        gbc_btnAddItem.gridy = 2;
 	        TopPanel.add(btnAddItem, gbc_btnAddItem);
 	        
+	        TopPanel.add(btnAddItem, gbc_btnAddItem);
+
+	        btnAddItem.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	                String barcode = textField_Barcode.getText().trim();
+	                String qtyText = textField_Quantity.getText().trim();
+
+	                if (barcode.isEmpty() || qtyText.isEmpty()) {
+	                    JOptionPane.showMessageDialog(Gui.this, "Udfyld både barcode og quantity.");
+	                    return;
+	                }
+
+	                int qty;
+	                try {
+	                    qty = Integer.parseInt(qtyText);
+	                } catch (NumberFormatException ex) {
+	                    JOptionPane.showMessageDialog(Gui.this, "Quantity skal være et tal.");
+	                    return;
+	                }
+
+	                if (qty <= 0) {
+	                    JOptionPane.showMessageDialog(Gui.this, "Quantity skal være større end 0.");
+	                    return;
+	                }
+
+	                orderController.addProductToOrder(barcode, qty);
+
+	             // Hvis barcode ikke findes, sker der intet fordi controller tjekker p != null
+	             // Så denne kan tjekke om der kom en ny line:
+	             refreshTableAndTotal();
+
+	                textField_Barcode.setText("");
+	                textField_Quantity.setText("");
+	                textField_Barcode.requestFocus();
+	            }
+	        });
+
+	        
 	        JScrollPane scrollPane = new JScrollPane();
 	        contentPane.add(scrollPane, BorderLayout.CENTER);
 	        
@@ -171,6 +217,23 @@ public class Gui extends JFrame {
 	        
 	        JButton btnExit = new JButton("Exit");
 	        BottomPanel.add(btnExit);
-
 }
+	 private void refreshTableAndTotal() {
+		 tableModel.setRowCount(0);
+		 
+		 for (model.OrderLine line : orderController.getOrder().getOrderLines()) {
+			 model.Product p = line.getProduct();
+			 
+			 String barcode = p.getBarcode();
+			 String name = p.getName();
+			 int qty= line.getQuantity();
+			 double unitPrice =p.getPrice();
+			 double lineTotal = line.calculateTotal();
+			 
+			 tableModel.addRow(new Object[] {barcode, name, qty, unitPrice, lineTotal });
+		 }
+		 double total = orderController.calculateOrderTotal();
+		 textField_Total.setText(String.format("%.2f", total));
+	 }
+	 
 }
