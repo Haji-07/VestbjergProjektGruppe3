@@ -54,4 +54,14 @@ public class CustomerController {
 		CustomerContainer.getInstance().addCustomer(customer);
 	}
 
+	public Customer createWalkInCustomer() {
+	    return createPrivateCustomer(
+	        "Joe",
+	        "Unknown",
+	        "0000",
+	        "00000000",
+	        "unknown@unknown.dk"
+	    );
+	}
+
 }
